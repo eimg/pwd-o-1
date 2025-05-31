@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model</title>
+    <style>
+        .wrap {
+            margin: 0 auto;
+            width: 600px;
+            height: 500px;
+            background: silver;
+            padding: 20px;
+        }
+        .box {
+            width: 300px;
+            height: 200px;
+        }
+        #box1 {
+            background: deeppink;
+            color: white;
+            font-size: 1.4em;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 5px solid black;
+        }
+        #box2 {
+            background: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box" id="box1">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae, quos.
+        </div>
+        <div class="box" id="box2"></div>
+    </div>
+</body>
+</html>
