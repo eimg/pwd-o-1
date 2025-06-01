@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        .box {
+            position: absolute;
+            border-radius: 200px;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, teal, purple);
+            transition: scale 0.5s;
+            animation: move 3s infinite alternate;
+        }
+        .box:hover {
+            scale: 1.1;
+        }
+        @keyframes move {
+            0% { top: 0; left: 0; }
+            50% { top: 400px; left: 400px; }
+            100% { top: 0; left: 800px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
