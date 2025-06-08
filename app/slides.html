@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slides</title>
+    <style>
+        .wrap {
+            width: 800px;
+            margin: 40px auto;
+            position: relative;
+        }
+        .wrap button {
+            position: absolute;
+            font-size: 3em;
+            top: 40%;
+            border: 0 none;
+            background: transparent;
+            color: white;
+            opacity: 0.6;
+        }
+        #prev {
+            left: 20px;
+        }
+        #next {
+            right: 20px;
+        }
+        .box {
+            height: 300px;
+            line-height: 300px;
+            font-size: 3em;
+            text-align: center;
+            color: white;
+        }
+        #box1 {
+            background: deeppink;
+        }
+        #box2 {
+            background: teal;
+            display: none;
+        }
+        #box3 {
+            background: purple;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <button id="prev" onclick="prev()">&laquo;</button>
+        <button id="next" onclick="next()">&raquo;</button>
+        <div class="box" id="box1">1</div>
+        <div class="box" id="box2">2</div>
+        <div class="box" id="box3">3</div>
+    </div>
+
+    <script>
+        var box = 1;
+
+        setInterval(next, 3000);
+
+        function prev() {
+            document.querySelector("#box" + box).style.display = "none";
+            box--;
+            if(box < 1) box = 3;
+            document.querySelector("#box" + box).style.display = "block";
+        }
+
+        function next() {
+            document.querySelector("#box" + box).style.display = "none";
+            box++;
+            if (box > 3) box = 1;
+            document.querySelector("#box" + box).style.display = "block";
+        }
+    </script>
+</body>
+</html>

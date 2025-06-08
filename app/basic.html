@@ -3,43 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .wrap {
-            margin: auto;
-            width: 1000px;
-            height: 500px;
-            background: silver;
-
-            display: flex;
-            gap: 10px;
-            /* flex-direction: row; */
-            justify-content: center;
-            /* flex-start, flex-end */
-            /* space-between, space-around */
-            align-items: center;
-            /* flex-start, flex-end */
-        }
-        .box {
-            width: 200px;
-            background: deeppink;
-        }
-        #box1 {
-            height: 250px;
-        }
-        #box2 {
-            height: 300px;
-        }
-        #box3 {
-            height: 250px;
-        }
-    </style>
+    <title>Basic</title>
 </head>
 <body>
-    <div class="wrap">
-        <div class="box" id="box1"></div>
-        <div class="box" id="box2"></div>
-        <div class="box" id="box3"></div>
-    </div>
+    <script>
+        let users = [
+            { name: 'Alice', age: 22 },
+            { name: 'Bob', age: 19 },
+            { name: 'Chris', age: 24 },
+            { name: 'Dave', age: 20 },
+            { name: 'Eve', age: 18 },
+        ];
+
+        let names = users.map(user => user.name);
+        let u20 = users.filter(user => user.age <= 20);
+        
+        let result = users
+            .filter(user => user.age <= 20)
+            .map(user => user.name);
+
+        // [1,2,3,4,5].map(n => n + 5)
+        // [1,2,3,4,5].filter(n => n != 2)
+    </script>
 </body>
 </html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello JS</title>
+</head>
+<body>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <button onclick="hello()">Button</button>
+
+    <script>
+        function hello() {
+            var p = document.querySelector("p");
+            p.textContent = "Hello JS";
+            p.style.padding = "20px";
+            p.style.background = "cyan";
+            p.style.borderLeft = "5px solid black";
+        }
+    </script>
+</body>
+</html>
