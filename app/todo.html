@@ -28,6 +28,35 @@
     </div>
 
     <script>
+        let data = getData();
+        data.map(item => createItem(item.text, item.done));
+        updateCount();
+
+        function getData() {
+            return JSON.parse(localStorage.getItem("data")) || [];
+        }
+
+        function saveData(text) {
+            let data = getData();
+            data.push({ text, done: false });
+            localStorage.setItem("data", JSON.stringify(data));
+        }
+
+        function deleteData(text) {
+            let data = getData();
+            let result = data.filter(item => item.text != text);
+            localStorage.setItem("data", JSON.stringify(result));
+        }
+
+        function checkData(text) {
+            let data = getData();
+            let result = data.map(item => {
+                if(item.text == text) item.done = true;
+                return item;
+            });
+            localStorage.setItem("data", JSON.stringify(result));
+        }
+
         function updateCount() {
             document.querySelector(".badge").textContent =
                 document.querySelectorAll("#todo li").length;
@@ -38,6 +67,7 @@
             if(text == "") return false;
 
             createItem(text);
+            saveData(text);
             updateCount();
 
             document.querySelector("input").value = "";
@@ -50,7 +80,7 @@
             }
         }
 
-        function createItem(text) {
+        function createItem(text, done = false) {
             let li = document.createElement("li");
             li.classList.add("list-group-item");
             li.textContent = text;
@@ -61,20 +91,27 @@
             check.onclick = () => {
                 document.querySelector("#done").appendChild(li);
                 check.remove();
+                checkData(text);
                 updateCount();
             }
-            li.appendChild(check);
+
+            if(done == false) li.appendChild(check);
 
             let del = document.createElement("a");
             del.setAttribute("href", "#");
             del.classList.add("fa-solid", "fa-trash", "text-danger", "float-end");
             del.onclick = () => {
                 li.remove();
+                deleteData(text);
                 updateCount();
             }
             li.appendChild(del);
 
-            document.querySelector("#todo").appendChild(li);
+            if(done) {
+                document.querySelector("#done").appendChild(li);
+            } else {
+                document.querySelector("#todo").appendChild(li);
+            }
         }
     </script>
 </body>
