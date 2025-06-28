@@ -1,12 +1,15 @@
 <?php
 
-include("autoload.php");
+include("vendor/autoload.php");
 
 use Libs\Math\Circle;
 use Support\Database;
+use Carbon\Carbon;
 
-$circle = new Circle;
-$circle->area(10);
+$c = new Circle;
+$c->area(80);
 
 $db = new Database;
 $db->connect();
+
+echo Carbon::now()->addDay(5);
