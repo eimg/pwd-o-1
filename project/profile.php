@@ -17,6 +17,16 @@
 <body>
     <div class="container" style="max-width: 800px">
         <h1 class="h4 my-4">Profile</h1>
+
+        <?php if($user->photo): ?>
+            <img src="_actions/photos/<?= $user->photo ?>" class="img-thumbnail" width="300">
+        <?php endif ?>
+
+        <form action="_actions/upload.php" class="input-group my-4" method="post" enctype="multipart/form-data">
+            <input type="file" name="photo" class="form-control">
+            <button class="btn btn-secondary">Upload</button>
+        </form>
+
         <ul class="list-group mb-3">
             <li class="list-group-item">Name: <?= $user->name ?></li>
             <li class="list-group-item">Email: <?= $user->email ?></li>
