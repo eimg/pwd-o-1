@@ -12,5 +12,6 @@ class HTTP
         if($q) $url .= "?$q";
 
         header("location: $url");
+        exit();
     }
 }
