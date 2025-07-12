@@ -13,6 +13,17 @@ class UsersTable
         $this->db = $mysql->connect();
     }
 
+    public function all()
+    {
+        $statement = $this->db->query(
+            "SELECT users.*, roles.name AS role
+            FROM users LEFT JOIN roles
+            ON users.role_id = roles.id"
+        );
+
+        return $statement->fetchAll();
+    }
+
     public function find($email, $password)
     {
         try {
