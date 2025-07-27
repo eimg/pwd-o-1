@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class AriticleController extends Controller
 {
@@ -56,6 +58,7 @@ class AriticleController extends Controller
         $article->title = request()->title;
         $article->body = request()->body;
         $article->category_id = request()->category_id;
+        $article->user_id = Auth::id();
         $article->save();
 
         return redirect("/articles");
@@ -96,8 +99,12 @@ class AriticleController extends Controller
     public function delete($id)
     {
         $article = Article::find($id);
-        $article->delete();
+        
+        if(Gate::allows('delete-article', $article)) {
+            $article->delete();
+            return redirect("/articles")->with("info", "Aritcle deleted");
+        }
 
-        return redirect("/articles")->with("info", "Aritcle deleted");
+        return back()->with('info', 'Unauthorized action');
     }
 }
